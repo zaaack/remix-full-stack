@@ -1,0 +1,85 @@
+{
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": false,
+  "scripts": {
+    "_dev": "remix vite:dev",
+    "dev": "foy dev",
+    "build": "remix vite:build",
+    "db:gen": "prisma generate",
+    "db:push": "prisma db push",
+    "fmt": "prettier -w .",
+    "clean": "rm -rf build node_modules pnpm-lock.yaml",
+    "deploy": "sh deploy.sh"
+  },
+  "dependencies": {
+    "@auth/express": "^0.6.0",
+    "@hono/node-server": "^1.12.0",
+    "@hookform/resolvers": "^3.9.0",
+    "@mui/base": "5.0.0-beta.40",
+    "@prisma/client": "5.17.0",
+    "@remix-run/node": "^2.11.0",
+    "@remix-run/react": "^2.11.0",
+    "@remix-run/serve": "^2.11.0",
+    "@trpc/client": "^10.45.2",
+    "@trpc/server": "^10.45.2",
+    "cookie": "^0.6.0",
+    "hono": "^4.5.3",
+    "isbot": "^5.1.13",
+    "jsonwebtoken": "^9.0.2",
+    "lucide-react": "^0.419.0",
+    "next-auth-prisma-adapter": "^0.1.0",
+    "ra-data-simple-prisma": "^5.2.1",
+    "react": "^18.3.1",
+    "react-admin": "^5.1.1",
+    "react-dom": "^18.3.1",
+    "react-hook-form": "^7.52.1",
+    "react-hot-toast": "^2.4.1",
+    "remix-hono": "^0.0.16",
+    "remix-utils": "^7.6.0",
+    "superjson": "^2.2.1",
+    "tailwind-merge": "^2.4.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@hono/vite-dev-server": "^0.13.1",
+    "@remix-run/dev": "^2.11.0",
+    "@remix-run/express": "^2.11.0",
+    "@swc-node/register": "^1.10.9",
+    "@types/cookie": "^0.6.0",
+    "@types/express": "^4.17.21",
+    "@types/jsonwebtoken": "^9.0.6",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vercel/ncc": "^0.38.1",
+    "autoprefixer": "^10.4.19",
+    "daisyui": "^4.12.10",
+    "esbuild": "^0.23.0",
+    "express": "^4.19.2",
+    "foy": "^0.2.25",
+    "postcss": "^8.4.40",
+    "prettier": "^3.3.3",
+    "prettier-plugin-tailwindcss": "^0.6.5",
+    "prisma": "^5.17.0",
+    "ra-data-json-server": "^5.1.1",
+    "remix-flat-routes": "^0.6.5",
+    "tailwindcss": "^3.4.7",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4",
+    "vite": "^5.3.5",
+    "vite-tsconfig-paths": "^4.3.2"
+  },
+  "prettier": {
+    "plugins": [
+      "prettier-plugin-tailwindcss"
+    ]
+  },
+  "packageManager": "pnpm@9.6.0",
+  "resolutions": {
+    "react-router": "6.24.1",
+    "react-router-dom": "6.24.1"
+  },
+  "ts-node": {
+    "esm": true
+  }
+}

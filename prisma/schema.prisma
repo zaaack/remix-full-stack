@@ -1,0 +1,37 @@
+generator client {
+  provider = "prisma-client-js"
+  
+  // native for dev, linux-musl-openssl-3.0.x for docker image node:alpine
+  // you can remove binaryTargets in dev
+  binaryTargets = ["native", "linux-musl-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id String @id @default(cuid())
+
+  username String @unique
+  password String
+
+  tasks Task[]
+
+  createAt  DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Task {
+  id String @id @default(cuid())
+
+  content String
+  done    Boolean @default(false)
+
+  user   User   @relation(fields: [userId], references: [id])
+  userId String
+
+  createAt  DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

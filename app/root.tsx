@@ -1,0 +1,55 @@
+import { unstable_defineLoader as defineLoader } from "@remix-run/node";
+import {
+  Links,
+  Meta,
+  Outlet,
+  Scripts,
+  ScrollRestoration,
+  useLoaderData,
+  useNavigate,
+  useNavigation
+} from "@remix-run/react";
+import { trpcServer } from "./common/trpc";
+import { Toaster } from "react-hot-toast";
+import { ReactNode, useEffect } from "react";
+import { Header } from "./components/Header";
+import "./global.css";
+
+export const loader = defineLoader(async (args) => {
+  const { myUserInfo } = await trpcServer(
+    args.request,
+  ).loader.getMyUserInfo.query();
+  return { myUserInfo };
+});
+
+export const Layout = ({ children }: { children: ReactNode }) => {
+  return (
+    <html lang="en">
+      <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <Meta />
+        <Links />
+      </head>
+      <body>
+        {children}
+        <ScrollRestoration />
+        <Scripts />
+      </body>
+    </html>
+  );
+};
+
+const App = () => {
+  const { myUserInfo } = useLoaderData<typeof loader>();
+  const nav = useNavigate()
+
+  return (
+    <>
+    <Outlet context={{ myUserInfo }} />
+    <Toaster />
+    </>
+  );
+};
+
+export default App;
